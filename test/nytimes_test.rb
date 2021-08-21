@@ -24,10 +24,13 @@ class NytimesTest < Minitest::Test
   end
 
   def test_it_can_get_all_stories_with_subsection_of_politics
+    # result = @hash[:results].select do |result|
+    #   (result[:title].start_with? 'C') ||
+    #   (result[:title].end_with? '.') &&
+    #   (result[:title].count('.') <= 3)
+    # end
     result = @hash[:results].select do |result|
-      (result[:title].start_with? 'C') ||
-      (result[:title].end_with? '.') &&
-      (result[:title].count('.') <= 3)
+      result[:subsection] ==  'Politics'
     end
 
     assert result.is_a? (Array)
